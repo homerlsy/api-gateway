@@ -1,0 +1,26 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: echo-service
+          uri: lb://echo
+          predicates:
+            - Path=/echo/**
+          filters:
+            - StripPrefix=1
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+  instance:
+    status-page-url-path: http://localhost:8081/actuator/health
+    instance-id: api-gateway
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
