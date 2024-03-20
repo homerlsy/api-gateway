@@ -19,8 +19,8 @@ management:
         include: "*"
 eureka:
   instance:
-    status-page-url-path: http://localhost:8081/actuator/health
+    status-page-url-path: http://api-gateway:8081/actuator/health
     instance-id: api-gateway
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://discovery:8762/eureka/
